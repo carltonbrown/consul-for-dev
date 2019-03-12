@@ -1,0 +1,27 @@
+{
+    "service": {
+        "name": "sso"
+    },
+    "checks": [
+        {
+            "id": "sso-redis-tcp",
+            "service_id": "sso",
+            "TCP": "host.docker.internal:6379",
+            "Interval": "10s"
+        },
+        {
+            "id": "sso-postgres-tcp",
+            "service_id": "sso",
+            "TCP": "host.docker.internal:5432",
+            "Interval": "10s"
+        },
+        {
+            "id": "sso-ui-https",
+            "service_id": "sso",
+            "HTTP": "https://host.docker.internal:8989/health",
+            "Method": "GET",
+            "Interval": "10s",
+            "TLSSkipVerify": true
+        }
+    ]
+}

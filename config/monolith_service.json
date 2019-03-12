@@ -1,0 +1,35 @@
+{
+    "service": {
+        "name": "monolith"
+    },
+    "checks": [
+        {
+            "id": "monolith-redis-tcp",
+            "service_id": "monolith",
+            "TCP": "host.docker.internal:6379",
+            "Interval": "10s"
+        },
+        {
+            "id": "monolith-postgres-tcp",
+            "service_id": "monolith",
+            "TCP": "host.docker.internal:55432",
+            "Interval": "10s"
+        },
+        {
+            "id": "crm-adapter-http",
+            "service_id": "monolith",
+            "HTTP": "http://host.docker.internal:1919",
+            "Method": "GET",
+            "Interval": "10s",
+            "TLSSkipVerify": true
+        },
+        {
+            "id": "monolith-ui-https",
+            "service_id": "monolith",
+            "HTTP": "https://host.docker.internal:8888/health",
+            "Method": "GET",
+            "Interval": "10s",
+            "TLSSkipVerify": true
+        }
+    ]
+}

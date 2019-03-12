@@ -1,0 +1,15 @@
+{
+    "service": {
+        "name": "app-ui"
+    },
+    "checks": [
+        {
+            "id": "app-ui-https",
+            "service_id": "app",
+            "HTTP": "https://host.docker.internal:11000",
+            "Method": "GET",
+            "Interval": "10s",
+            "TLSSkipVerify": true
+        }
+    ]
+}
