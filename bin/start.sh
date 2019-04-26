@@ -1,11 +1,7 @@
-CONTAINER_NAME=dev-consul
-IMAGE_NAME=business-consul
+#!/usr/bin/env bash
+. ../.env
 
-docker stop $CONTAINER_NAME && docker rm $CONTAINER_NAME && docker rmi $IMAGE_NAME
-
-mkdir -p certs
-cp -f ~/src/localhost.businessloft.com.crt certs/
-docker build -t $IMAGE_NAME .
+bash ../build.sh
 
 CONTAINER_CONFIG_DIR=/etc/consul.d
 CONTAINER_DATA_DIR=/var/lib/consul
